@@ -1,0 +1,32 @@
+@import "../../Styles/Variables.scss";
+
+.keypad {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color: $theme1Bckgrnd2;
+  max-width: 400px;
+  height: 350px;
+  margin: 80px auto;
+  padding: 25px;
+  border-radius: 10px;
+
+  &__blue {
+    color: $theme1WhiteText;
+    background-color: $theme1KeyBckgrndBlue;
+    box-shadow: 0px 3px 0px 0px $theme1keyShadowBlue;
+  }
+
+  &__red {
+    color: $theme1WhiteText;
+    background-color: $theme1KeyBckgrndToggleRed;
+    box-shadow: 0px 3px 0px 0px $theme1KeyShadowRed;
+  }
+
+  &__merged-one {
+    grid-area: 5/1/5 / span 2;
+  }
+  &__merged-two {
+    grid-area: 5/3/5 / span 2;
+  }
+}

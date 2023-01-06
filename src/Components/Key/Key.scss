@@ -1,0 +1,15 @@
+@import "../../Styles/Variables.scss";
+
+.key {
+  @include flexCenter;
+  color: $theme1BlueText;
+  text-align: center;
+  background-color: $theme1KeyBackgroundWheat;
+  border-radius: 5px;
+  box-shadow: 0px 3px 0px 0px $theme1KeyShadowWheat;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: tomato;
+  }
+}
