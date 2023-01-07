@@ -1,15 +1,44 @@
 @import "../../Styles/Variables.scss";
 
 .key {
+  $self: &;
   @include flexCenter;
-  color: $theme1BlueText;
   text-align: center;
+  color: $theme1BlueText;
   background-color: $theme1KeyBackgroundWheat;
+  border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: 0px 3px 0px 0px $theme1KeyShadowWheat;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   &:hover {
-    background-color: tomato;
+    background-color: $theme1KeyHoverWheat;
+  }
+
+  &--delReset {
+    @extend .key;
+    color: $theme1WhiteText;
+    background-color: $theme1KeyBckgrndBlue;
+    box-shadow: 0px 3px 0px 0px $theme1keyShadowBlue;
+    &:hover {
+      background-color: $theme1keyHoverBlue;
+    }
+  }
+
+  &--equal {
+    @extend .key;
+    background-color: $theme1KeyBckgrndToggleRed;
+    color: $theme1WhiteText;
+    box-shadow: 0px 3px 0px 0px $theme1KeyShadowRed;
+    &:hover {
+      background-color: $theme1KeyHoverRed;
+    }
+  }
+
+  &--spanOne {
+    grid-area: 5/1/5 / span 2;
+  }
+  &--spanTwo {
+    grid-area: 5/3/5 / span 2;
   }
 }

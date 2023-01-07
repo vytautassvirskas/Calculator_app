@@ -1,0 +1,12 @@
+@import "../../Styles/Variables.scss";
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  &__title {
+    color: $theme1WhiteText;
+    font-size: 18px;
+  }
+}

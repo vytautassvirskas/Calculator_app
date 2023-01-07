@@ -1,28 +1,84 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import MainContext from "../../Utils/MainContext";
+import btnsValues from "../../Utils/data.js";
 import Key from "../Key/Key";
 import "./KeyPad.scss";
 
 const KeyPad = () => {
+  const { display, setDisplay } = useContext(MainContext);
+
+  const handleDelete = () => {
+    console.log("delete btn veikia")
+  }
+
+  //reset
+  const handleReset = (value) => {
+    console.log("reset mygtukas", "handleReset rodo value: ", value);
+    setDisplay("0");
+  };
+
+  //display
+  function handleDisplay(value) {
+    console.log(
+      "handelDisplay funct value:",
+      value,
+      "typeof value: ",
+      typeof value
+    );
+
+    if (display.contain)
+      if (display === "0" && value !== "0") {
+        //jei pirmas skaicius 0 ir pradedi vesti skaicius be tasko
+        if (value === ".") {
+          setDisplay(display + value);
+          return;
+        }
+        setDisplay(value);
+        return;
+      }
+
+    if (display === "0" && value === "0") {
+      console.log("display yra nulis");
+      // setDisplay((prevValue) => {
+      //   return prevValue;
+      // });
+      return;
+    }
+
+    setDisplay((prevValue) => {
+      return prevValue + value;
+    });
+  }
+
+  // useEffect(() => {
+  //   console.log(
+  //     "useEfecte display: ",
+  //     display,
+  //     "display tupeof: ",
+  //     typeof display
+  //   );
+  // }, [display]);
+
   return (
     <div className="keypad">
-      <Key value={7} />
-      <Key value={8} />
-      <Key value={9} />
-      <Key className="keypad__blue" value={"DEL"} />
-      <Key value={4} />
-      <Key value={5} />
-      <Key value={6} />
-      <Key value={"+"} />
-      <Key value={1} />
-      <Key value={2} />
-      <Key value={3} />
-      <Key value={"-"} />
-      <Key value={"."} />
-      <Key value={0} />
-      <Key value={"/"} />
-      <Key value={"x"} />
-      <Key className="keypad__merged-one keypad__blue" value={"RESET"} />
-      <Key className="keypad__merged-two keypad__red" value={"="} />
+      {btnsValues.map((btn, index) => {
+        return (
+          <Key
+            key={index}
+            value={btn}
+            className={
+              btn === "DEL"
+                ? "key--delReset"
+                : btn === "RESET"
+                ? "key--spanOne key--delReset"
+                : btn === "=" && "key--spanTwo key--equal"
+            }
+            handleClick={
+              btn === "DEL" ? 
+            }
+          />
+        );
+      })}
     </div>
   );
 };

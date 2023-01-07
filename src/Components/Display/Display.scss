@@ -1,0 +1,12 @@
+@import "../../Styles/Variables.scss";
+
+.display {
+  background-color: $theme1Bckgrnd3;
+  text-align: right;
+  @include paddingRadius;
+  margin-bottom: 20px;
+  &__value {
+    color: $theme1WhiteText;
+    font-size: $fontResultSize;
+  }
+}

@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import MainContext from "../../Utils/MainContext";
 import "./Key.scss";
 
 const Key = (props) => {
-  console.log("props.classname", props.className);
+  const { className, value, handleClick } = props;
+
+  const { handleDisplay } = useContext(MainContext);
+
   return (
-    <div className={props.className ? `key ${props.className}` : "key"}>
-      {props.value}
-    </div>
+    <button
+      className={className ? `${className}` : "key"}
+      onClick={() => handleClick()}
+    >
+      {value}
+    </button>
   );
 };
 
