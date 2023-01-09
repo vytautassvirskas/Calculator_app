@@ -5,59 +5,115 @@ import Key from "../Key/Key";
 import "./KeyPad.scss";
 
 const KeyPad = () => {
-  const { display, setDisplay } = useContext(MainContext);
+  const { calc, setCalc } = useContext(MainContext);
 
+  //delete +++???
   const handleDelete = () => {
-    console.log("delete btn veikia")
-  }
-
-  //reset
-  const handleReset = (value) => {
-    console.log("reset mygtukas", "handleReset rodo value: ", value);
-    setDisplay("0");
-  };
-
-  //display
-  function handleDisplay(value) {
-    console.log(
-      "handelDisplay funct value:",
-      value,
-      "typeof value: ",
-      typeof value
-    );
-
-    if (display.contain)
-      if (display === "0" && value !== "0") {
-        //jei pirmas skaicius 0 ir pradedi vesti skaicius be tasko
-        if (value === ".") {
-          setDisplay(display + value);
-          return;
-        }
-        setDisplay(value);
-        return;
-      }
-
-    if (display === "0" && value === "0") {
-      console.log("display yra nulis");
-      // setDisplay((prevValue) => {
-      //   return prevValue;
-      // });
+    if (calc.input.length > 1 || calc.result.length > 1) {
+      setCalc({
+        ...calc,
+        input: calc.input
+          ? calc.input.toString().slice(0, calc.input.length - 1)
+          : 0,
+        result: calc.result
+          ? calc.result.toString().slice(0, calc.result.length - 1)
+          : 0,
+      });
       return;
     }
 
-    setDisplay((prevValue) => {
-      return prevValue + value;
+    setCalc({
+      ...calc,
+      input: 0,
+      result: 0,
     });
-  }
+  };
 
-  // useEffect(() => {
-  //   console.log(
-  //     "useEfecte display: ",
-  //     display,
-  //     "display tupeof: ",
-  //     typeof display
-  //   );
-  // }, [display]);
+  //reset ++++
+  const handleReset = (value) => {
+    // console.log(`veikia  resetbtn ${value}`);
+    setCalc({
+      ...calc,
+      mathSign: "",
+      input: 0,
+      result: 0,
+    });
+  };
+
+  //handleDot +++
+  const handleDot = (value) => {
+    // console.log(`veikia  dot btn ${value}`);
+
+    setCalc({
+      ...calc,
+      input: !calc.input.toString().includes(".")
+        ? calc.input + value
+        : calc.input,
+    });
+  };
+
+  //handleNumber
+  const handleNumber = (value) => {
+    // console.log(`skaicius ${value}, jo datatype ${typeof value}`);
+
+    if (calc.input.toString().length < 18) {
+      setCalc({
+        ...calc,
+        input:
+          calc.input === 0 && value === "0"
+            ? "0"
+            : calc.input === "0" || calc.input === 0
+            ? value
+            : calc.input + value,
+      });
+    }
+  };
+
+  const handleMath = (a, b, mathSign) => {
+    return mathSign === "+"
+      ? a + b
+      : mathSign === "-"
+      ? a - b
+      : mathSign === "x"
+      ? a * b
+      : a / b;
+  };
+
+  //equal
+  const handleEqual = (value) => {
+    // console.log(`veikia  lygu btn ${value}`);
+    if (calc.mathSign && calc.input) {
+      setCalc({
+        ...calc,
+        result:
+          calc.mathSign === "/" && calc.input === "0"
+            ? "Cannot divide by zero"
+            : handleMath(+calc.result, +calc.input, calc.mathSign),
+        mathSign: "",
+        input: 0,
+      });
+    }
+  };
+
+  //handleMath
+  const handleMathSign = (value) => {
+    // console.log(`veikia  math btn ${value}`);
+    setCalc({
+      ...calc,
+      mathSign: value,
+      result:
+        calc.result && calc.input
+          ? handleMath(+calc.result, +calc.input, calc.mathSign)
+          : calc.result
+          ? calc.result
+          : calc.input,
+      input: 0,
+    });
+  };
+
+  useEffect(() => {
+    console.log("useEfecte calc: ", calc);
+  }, [calc]);
 
   return (
     <div className="keypad">
@@ -74,7 +130,17 @@ const KeyPad = () => {
                 : btn === "=" && "key--spanTwo key--equal"
             }
             handleClick={
-              btn === "DEL" ? 
+              btn === "DEL"
+                ? handleDelete
+                : btn === "RESET"
+                ? handleReset
+                : btn === "="
+                ? handleEqual
+                : btn === "."
+                ? handleDot
+                : btn === "+" || btn === "-" || btn === "x" || btn === "/"
+                ? handleMathSign
+                : handleNumber
             }
           />
         );

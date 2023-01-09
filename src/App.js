@@ -8,10 +8,12 @@ import DashBoard from "./Components/CalcTop/DashBoard.js";
 
 function App() {
   const [theme, setTheme] = useState("theme1");
-  const [operand1, setOperand1] = useState(null);
-  const [operand2, setOperand2] = useState(null);
-  const [display, setDisplay] = useState(0);
-  const contextValues = { display, setDisplay };
+  const [calc, setCalc] = useState({
+    mathSign: "",
+    input: 0,
+    result: 0,
+  });
+  const contextValues = { calc, setCalc };
 
   return (
     <MainContext.Provider value={contextValues}>

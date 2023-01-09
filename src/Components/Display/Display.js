@@ -3,10 +3,11 @@ import MainContext from "../../Utils/MainContext";
 import "./Display.scss";
 
 const Display = () => {
-  const { display, setDisplay } = useContext(MainContext);
+  const { calc, setCalc } = useContext(MainContext);
+
   return (
     <div className="display">
-      <p className="display__value"> {display}</p>
+      <p className="display__value">{calc.input ? calc.input : calc.result}</p>
     </div>
   );
 };

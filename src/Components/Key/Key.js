@@ -9,8 +9,9 @@ const Key = (props) => {
 
   return (
     <button
+      type="button"
       className={className ? `${className}` : "key"}
-      onClick={() => handleClick()}
+      onClick={(e) => handleClick(value, e)}
     >
       {value}
     </button>
