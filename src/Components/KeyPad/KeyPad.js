@@ -7,17 +7,18 @@ import "./KeyPad.scss";
 const KeyPad = () => {
   const { calc, setCalc } = useContext(MainContext);
 
-  //delete +++???
+  const handleSlice = (value) => {
+    return value.toString().slice(0, value.length - 1);
+  };
+
+  //delete?????????????
   const handleDelete = () => {
     if (calc.input.length > 1 || calc.result.length > 1) {
       setCalc({
         ...calc,
-        input: calc.input
-          ? calc.input.toString().slice(0, calc.input.length - 1)
-          : 0,
-        result: calc.result
-          ? calc.result.toString().slice(0, calc.result.length - 1)
-          : 0,
+        input: calc.input ? handleSlice(calc.input) : 0,
+        result:
+          calc.result && !calc.input ? handleSlice(calc.result) : calc.result,
       });
       return;
     }
@@ -31,7 +32,6 @@ const KeyPad = () => {
 
   //reset ++++
   const handleReset = (value) => {
-    // console.log(`veikia  resetbtn ${value}`);
     setCalc({
       ...calc,
       mathSign: "",
@@ -42,8 +42,6 @@ const KeyPad = () => {
 
   //handleDot +++
   const handleDot = (value) => {
-    // console.log(`veikia  dot btn ${value}`);
-
     setCalc({
       ...calc,
       input: !calc.input.toString().includes(".")
@@ -54,8 +52,6 @@ const KeyPad = () => {
 
   //handleNumber
   const handleNumber = (value) => {
-    // console.log(`skaicius ${value}, jo datatype ${typeof value}`);
-
     if (calc.input.toString().length < 18) {
       setCalc({
         ...calc,
@@ -81,14 +77,13 @@ const KeyPad = () => {
 
   //equal
   const handleEqual = (value) => {
-    // console.log(`veikia  lygu btn ${value}`);
     if (calc.mathSign && calc.input) {
       setCalc({
         ...calc,
         result:
           calc.mathSign === "/" && calc.input === "0"
             ? "Cannot divide by zero"
-            : handleMath(+calc.result, +calc.input, calc.mathSign),
+            : handleMath(+calc.result, +calc.input, calc.mathSign).toString(), //for deleting last digit it should be string
         mathSign: "",
         input: 0,
       });
@@ -97,7 +92,6 @@ const KeyPad = () => {
 
   //handleMath
   const handleMathSign = (value) => {
-    // console.log(`veikia  math btn ${value}`);
     setCalc({
       ...calc,
       mathSign: value,
@@ -106,7 +100,7 @@ const KeyPad = () => {
           ? handleMath(+calc.result, +calc.input, calc.mathSign)
           : calc.result
           ? calc.result
-          : calc.input,
+          : Number(calc.input).toString(), //for deleting last digit it should be string
       input: 0,
     });
   };
