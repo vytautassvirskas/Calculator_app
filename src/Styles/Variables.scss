@@ -46,12 +46,15 @@ $theme2ScreenBckgrnd: hsl(0, 0%, 93%);
 
 $theme2KeyBckgrndCyan: hsl(185, 42%, 37%);
 $theme2KeyShadowCyan: hsl(185, 58%, 25%);
+$theme2KeyHoverCyan: hsl(185, 42%, 47%);
 
 $theme2KeyBckgrndToggleOrng: hsl(25, 98%, 40%);
 $theme2KeyShadowOrng: hsl(25, 99%, 27%);
+$theme2KeyHoverOrng: hsl(25, 98%, 50%);
 
 $theme2KeyBackgroundWheat: hsl(45, 7%, 89%);
 $theme2KeyShadowWheat: hsl(35, 11%, 61%);
+$theme2KeyHoverWheat: hsl(45, 7%, 99%);
 
 // #### Text
 
@@ -71,12 +74,15 @@ $theme3Bckgrnd2: hsl(268, 71%, 12%);
 
 $theme3KeyBckgrndViolet: hsl(281, 89%, 26%);
 $theme3KeyShdowViolet: hsl(285, 91%, 52%);
+$theme3KeyHoverViolet: hsl(281, 89%, 36%);
 
 $theme3KeyBckgrndToggleCyan: hsl(176, 100%, 44%);
 $theme3KeyShdowCyan: hsl(177, 92%, 70%);
+$theme3KeyHoverCyan: hsl(176, 100%, 54%);
 
-$theme3KeyBckgrndViolet: hsl(268, 47%, 21%);
+$theme3KeyBckgrndDark: hsl(268, 47%, 21%);
 $theme3KeyShdowMagenta: hsl(290, 70%, 36%);
+$theme3KeyHoverDark: hsl(268, 47%, 31%);
 
 // #### Text
 
@@ -102,4 +108,10 @@ $fontWeight: 700;
 @mixin paddingRadius {
   padding: 25px;
   border-radius: 10px;
+}
+
+:export {
+  backgroundTheme1: $theme1Bckgrnd1;
+  backgroundTheme2: $theme2MainBckgrnd;
+  backgroundTheme3: $theme3Bckgrnd1;
 }

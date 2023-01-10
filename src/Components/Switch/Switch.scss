@@ -1,0 +1,89 @@
+@import "../../Styles/Variables.scss";
+
+.theme-toggle {
+  $self: &;
+  position: relative;
+  @include flexCenter;
+  &__title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-right: 15px;
+    color: $theme1WhiteText;
+  }
+
+  &__wrapper {
+    @include flexCenter;
+    padding: 0 2px;
+    background-color: wheat;
+    border-radius: 20px;
+    align-items: flex-start;
+  }
+  &__radio-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    @include flexCenter;
+  }
+  &__input {
+    display: none;
+    margin: 5px;
+    &:checked + #{$self}__checkmark {
+      opacity: 1;
+    }
+  }
+  &__checkmark {
+    cursor: pointer;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    background-color: hsl(6, 63%, 50%); //spalva pakeisti
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  &__list {
+    @include flexCenter;
+    position: absolute;
+    top: -20px;
+    right: 3px;
+  }
+  &__themeNo {
+    font-size: 10px;
+    color: $theme1WhiteText;
+    padding: 7px;
+  }
+}
+
+#theme2 .theme-toggle {
+  &__title {
+    color: $theme2BlueText;
+  }
+  &__wrapper {
+    background-color: $theme2ToggleKeypadBckgrnd;
+  }
+
+  &__checkmark {
+    background-color: $theme2KeyBckgrndToggleOrng;
+  }
+
+  &__themeNo {
+    color: $theme2BlueText;
+  }
+}
+
+#theme3 .theme-toggle {
+  &__title {
+    color: $theme3YellowText;
+  }
+  &__wrapper {
+    background-color: $theme3Bckgrnd2;
+  }
+
+  &__checkmark {
+    background-color: $theme3KeyBckgrndToggleCyan;
+  }
+
+  &__themeNo {
+    color: $theme3YellowText;
+  }
+}

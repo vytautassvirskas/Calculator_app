@@ -10,3 +10,17 @@
     font-size: $fontResultSize;
   }
 }
+
+#theme2 .display {
+  background-color: $theme2ScreenBckgrnd;
+  &__value {
+    color: $theme2BlueText;
+  }
+}
+
+#theme3 .display {
+  background-color: $theme3Bckgrnd2;
+  &__value {
+    color: $theme3YellowText;
+  }
+}

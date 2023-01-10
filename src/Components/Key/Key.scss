@@ -42,3 +42,59 @@
     grid-area: 5/3/5 / span 2;
   }
 }
+
+#theme2 .key {
+  color: $theme2BlueText;
+  background-color: $theme2KeyBackgroundWheat;
+  box-shadow: 0px 3px 0px 0px $theme2KeyShadowWheat;
+  &:hover {
+    background-color: $theme2KeyHoverWheat;
+  }
+  &--delReset {
+    @extend .key;
+    color: $theme2WhiteText;
+    background-color: $theme2KeyBckgrndCyan;
+    box-shadow: 0px 3px 0px 0px $theme2KeyShadowCyan; //
+    &:hover {
+      background-color: $theme2KeyHoverCyan;
+    }
+  }
+
+  &--equal {
+    @extend .key;
+    background-color: $theme2KeyBckgrndToggleOrng;
+    color: $theme2WhiteText;
+    box-shadow: 0px 3px 0px 0px $theme2KeyShadowOrng;
+    &:hover {
+      background-color: $theme2KeyHoverOrng;
+    }
+  }
+}
+
+#theme3 .key {
+  color: $theme3YellowText;
+  background-color: $theme3KeyBckgrndViolet;
+  box-shadow: 0px 3px 0px 0px $theme3KeyShdowViolet;
+  &:hover {
+    background-color: $theme3KeyHoverViolet;
+  }
+  &--delReset {
+    @extend .key;
+    color: $theme3WhiteText;
+    background-color: $theme3KeyBckgrndDark;
+    box-shadow: 0px 3px 0px 0px $theme3KeyShdowMagenta;
+    &:hover {
+      background-color: $theme3KeyHoverDark;
+    }
+  }
+
+  &--equal {
+    @extend .key;
+    color: $theme3BlueText;
+    background-color: $theme3KeyBckgrndToggleCyan;
+    box-shadow: 0px 3px 0px 0px $theme3KeyShdowCyan;
+    &:hover {
+      background-color: $theme3KeyHoverCyan;
+    }
+  }
+}

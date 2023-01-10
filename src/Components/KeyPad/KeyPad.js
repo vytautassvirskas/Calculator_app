@@ -61,6 +61,7 @@ const KeyPad = () => {
             : calc.input === "0" || calc.input === 0
             ? value
             : calc.input + value,
+        result: !calc.mathSign ? 0 : calc.result,
       });
     }
   };

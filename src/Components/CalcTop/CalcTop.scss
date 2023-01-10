@@ -1,6 +1,6 @@
 @import "../../Styles/Variables.scss";
 
-.dashboard {
+.calctop {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,5 +8,16 @@
   &__title {
     color: $theme1WhiteText;
     font-size: 18px;
+  }
+}
+#theme2 .calctop {
+  &__title {
+    color: $theme2BlueText;
+  }
+}
+
+#theme3 .calctop {
+  &__title {
+    color: $theme3YellowText;
   }
 }
