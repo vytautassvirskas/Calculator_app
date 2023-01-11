@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import MainContext from "../../Utils/MainContext";
 import btnsValues from "../../Utils/data.js";
 import Key from "../Key/Key";
 import "./KeyPad.scss";
-
-
 
 const KeyPad = () => {
   const { calc, setCalc } = useContext(MainContext);
@@ -46,9 +44,13 @@ const KeyPad = () => {
   const handleDot = (value) => {
     setCalc({
       ...calc,
-      input: !calc.input.toString().includes(".")
-        ? calc.input + value
-        : calc.input,
+      input:
+        calc.result && !calc.result.toString().includes(".")
+          ? calc.result + value
+          : !calc.input.toString().includes(".")
+          ? calc.input + value
+          : calc.input,
+      result: !calc.mathSign ? 0 : calc.result,
     });
   };
 
@@ -60,6 +62,8 @@ const KeyPad = () => {
         input:
           calc.input === 0 && value === "0"
             ? "0"
+            : calc.result && !calc.input && !calc.mathSign
+            ? calc.result + value
             : calc.input === "0" || calc.input === 0
             ? value
             : calc.input + value,
@@ -107,6 +111,10 @@ const KeyPad = () => {
       input: 0,
     });
   };
+
+  useEffect(() => {
+    console.log("useEfecte calc: ", calc);
+  }, [calc]);
 
   return (
     <div className="keypad">
