@@ -36,6 +36,4 @@ Users should be able to:
 
 - Semantic HTML5 markup
 - SASS
-- Flexbox
-- CSS Grid
 - [React](https://reactjs.org/) - JS library
