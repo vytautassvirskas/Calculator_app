@@ -111,10 +111,10 @@ const KeyPad = () => {
       input: 0,
     });
   };
-
-  useEffect(() => {
-    console.log("useEfecte calc: ", calc);
-  }, [calc]);
+  //console.log calc
+  // useEffect(() => {
+  //   console.log("useEffect calc: ", calc);
+  // }, [calc]);
 
   return (
     <div className="keypad">
