@@ -4,9 +4,8 @@ import "./Switch.scss";
 
 const Switch = () => {
   const { theme, setTheme } = useContext(MainContext);
-
-  const handleThemeChange = (theme) => {
-    setTheme(theme);
+  const handleChecked = (currentTheme, themeOption) => {
+    return currentTheme === themeOption ? true : false;
   };
   return (
     <div className="theme-toggle">
@@ -18,8 +17,8 @@ const Switch = () => {
             id="first"
             name="toggle-state"
             type="radio"
-            checked={theme === "theme1" ? true : false}
-            onChange={() => setTheme("theme1")}
+            checked={handleChecked(theme, "dark")}
+            onChange={() => setTheme("dark")}
           />
           <span className="theme-toggle__checkmark"></span>
         </label>
@@ -29,8 +28,8 @@ const Switch = () => {
             id="second"
             name="toggle-state"
             type="radio"
-            checked={theme === "theme2" ? true : false}
-            onChange={() => setTheme("theme2")}
+            checked={handleChecked(theme, "light")}
+            onChange={() => setTheme("light")}
           />
           <span className="theme-toggle__checkmark"></span>
         </label>
@@ -40,8 +39,8 @@ const Switch = () => {
             id="third"
             name="toggle-state"
             type="radio"
-            checked={theme === "theme3" ? true : false}
-            onChange={() => setTheme("theme3")}
+            checked={handleChecked(theme, "neon")}
+            onChange={() => setTheme("neon")}
           />
           <span className="theme-toggle__checkmark"></span>
         </label>

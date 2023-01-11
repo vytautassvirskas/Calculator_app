@@ -1,26 +1,15 @@
 @import "../../Styles/Variables.scss";
 
 .display {
-  background-color: $theme1Bckgrnd3;
+  background-color: $c-bg-screen;
   text-align: right;
   @include paddingRadius;
   margin-bottom: 20px;
   &__value {
-    color: $theme1WhiteText;
-    font-size: $fontResultSize;
-  }
-}
-
-#theme2 .display {
-  background-color: $theme2ScreenBckgrnd;
-  &__value {
-    color: $theme2BlueText;
-  }
-}
-
-#theme3 .display {
-  background-color: $theme3Bckgrnd2;
-  &__value {
-    color: $theme3YellowText;
+    color: $c-text-display;
+    font-size: $fs-screen;
+    @media (width <= 768px) {
+      font-size: $fs-screen2;
+    }
   }
 }

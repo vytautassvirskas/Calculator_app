@@ -1,0 +1,10 @@
+@import "Variables.scss";
+@keyframes keyDrop {
+  0% {
+    box-shadow: 0 3px $c-keys-shadow;
+  }
+
+  100% {
+    box-shadow: 0 0px $c-keys-shadow;
+  }
+}

@@ -1,8 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import MainContext from "../../Utils/MainContext";
 import btnsValues from "../../Utils/data.js";
 import Key from "../Key/Key";
 import "./KeyPad.scss";
+
+
 
 const KeyPad = () => {
   const { calc, setCalc } = useContext(MainContext);
@@ -11,7 +13,7 @@ const KeyPad = () => {
     return value.toString().slice(0, value.length - 1);
   };
 
-  //delete?????????????
+  //delete
   const handleDelete = () => {
     if (calc.input.length > 1 || calc.result.length > 1) {
       setCalc({
@@ -30,8 +32,8 @@ const KeyPad = () => {
     });
   };
 
-  //reset ++++
-  const handleReset = (value) => {
+  //reset
+  const handleReset = () => {
     setCalc({
       ...calc,
       mathSign: "",
@@ -40,7 +42,7 @@ const KeyPad = () => {
     });
   };
 
-  //handleDot +++
+  //handleDot
   const handleDot = (value) => {
     setCalc({
       ...calc,
@@ -77,7 +79,7 @@ const KeyPad = () => {
   };
 
   //equal
-  const handleEqual = (value) => {
+  const handleEqual = () => {
     if (calc.mathSign && calc.input) {
       setCalc({
         ...calc,
@@ -105,10 +107,6 @@ const KeyPad = () => {
       input: 0,
     });
   };
-
-  useEffect(() => {
-    console.log("useEfecte calc: ", calc);
-  }, [calc]);
 
   return (
     <div className="keypad">

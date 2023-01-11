@@ -4,34 +4,46 @@
   $self: &;
   @include flexCenter;
   text-align: center;
-  color: $theme1BlueText;
-  background-color: $theme1KeyBackgroundWheat;
-  border: 1px solid transparent;
+  color: $c-text-primary;
+  background-color: $c-keys;
+  border: none;
   border-radius: 5px;
-  box-shadow: 0px 3px 0px 0px $theme1KeyShadowWheat;
+  box-shadow: 0px 3px 0px 0px $c-keys-shadow;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0ms ease-in-out;
   &:hover {
-    background-color: $theme1KeyHoverWheat;
+    background-color: $c-keys-hover;
+  }
+  &:active {
+    transform: translateY(3px);
+    animation: keyDrop 0ms ease-in forwards;
   }
 
   &--delReset {
     @extend .key;
-    color: $theme1WhiteText;
-    background-color: $theme1KeyBckgrndBlue;
-    box-shadow: 0px 3px 0px 0px $theme1keyShadowBlue;
+    font-size: $fs-key2; //
+    color: $c-text-secondary;
+    background-color: $c-keys-func;
+    box-shadow: 0px 3px 0px 0px $c-keys-func-shadow;
+    @media (width <=768px) {
+      font-size: $fs-key3; //
+    }
     &:hover {
-      background-color: $theme1keyHoverBlue;
+      background-color: $c-keys-func-hover;
     }
   }
 
   &--equal {
     @extend .key;
-    background-color: $theme1KeyBckgrndToggleRed;
-    color: $theme1WhiteText;
-    box-shadow: 0px 3px 0px 0px $theme1KeyShadowRed;
+    font-size: 20px;
+    background-color: $c-keys-equal;
+    color: $c-text-tertiary;
+    box-shadow: 0px 3px 0px 0px $c-keys-equal-shadow;
+    @media (width <=768px) {
+      font-size: $fs-key3; //
+    }
     &:hover {
-      background-color: $theme1KeyHoverRed;
+      background-color: $c-keys-equal-hover;
     }
   }
 
@@ -40,61 +52,5 @@
   }
   &--spanTwo {
     grid-area: 5/3/5 / span 2;
-  }
-}
-
-#theme2 .key {
-  color: $theme2BlueText;
-  background-color: $theme2KeyBackgroundWheat;
-  box-shadow: 0px 3px 0px 0px $theme2KeyShadowWheat;
-  &:hover {
-    background-color: $theme2KeyHoverWheat;
-  }
-  &--delReset {
-    @extend .key;
-    color: $theme2WhiteText;
-    background-color: $theme2KeyBckgrndCyan;
-    box-shadow: 0px 3px 0px 0px $theme2KeyShadowCyan; //
-    &:hover {
-      background-color: $theme2KeyHoverCyan;
-    }
-  }
-
-  &--equal {
-    @extend .key;
-    background-color: $theme2KeyBckgrndToggleOrng;
-    color: $theme2WhiteText;
-    box-shadow: 0px 3px 0px 0px $theme2KeyShadowOrng;
-    &:hover {
-      background-color: $theme2KeyHoverOrng;
-    }
-  }
-}
-
-#theme3 .key {
-  color: $theme3YellowText;
-  background-color: $theme3KeyBckgrndViolet;
-  box-shadow: 0px 3px 0px 0px $theme3KeyShdowViolet;
-  &:hover {
-    background-color: $theme3KeyHoverViolet;
-  }
-  &--delReset {
-    @extend .key;
-    color: $theme3WhiteText;
-    background-color: $theme3KeyBckgrndDark;
-    box-shadow: 0px 3px 0px 0px $theme3KeyShdowMagenta;
-    &:hover {
-      background-color: $theme3KeyHoverDark;
-    }
-  }
-
-  &--equal {
-    @extend .key;
-    color: $theme3BlueText;
-    background-color: $theme3KeyBckgrndToggleCyan;
-    box-shadow: 0px 3px 0px 0px $theme3KeyShdowCyan;
-    &:hover {
-      background-color: $theme3KeyHoverCyan;
-    }
   }
 }

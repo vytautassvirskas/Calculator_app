@@ -4,17 +4,8 @@
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  background-color: $theme1Bckgrnd2;
-  // max-width: 400px;
+  background-color: $c-bg-keypad;
+
   height: 350px;
-  // margin: 80px auto;
   @include paddingRadius;
-}
-
-#theme2 .keypad {
-  background-color: $theme2ToggleKeypadBckgrnd;
-}
-
-#theme3 .keypad {
-  background-color: $theme3Bckgrnd2;
 }

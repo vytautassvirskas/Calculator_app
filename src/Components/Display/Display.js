@@ -3,7 +3,7 @@ import MainContext from "../../Utils/MainContext";
 import "./Display.scss";
 
 const Display = () => {
-  const { calc, setCalc } = useContext(MainContext);
+  const { calc } = useContext(MainContext);
 
   return (
     <div className="display">

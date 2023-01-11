@@ -1,104 +1,44 @@
-//THEME NO. 1
+/* Colors from base/theme-colors.scss */
+/* Backgrounds */
+$c-bg-main: var(--c-bg-main);
+$c-bg-keypad: var(--c-bg-keypad);
+$c-bg-toggle: var(--c-bg-toggle);
+$c-bg-screen: var(--c-bg-screen);
+/* Keys */
+$c-keys-func: var(--c-keys-func);
+$c-keys-func-shadow: var(--c-keys-func-shadow);
+$c-keys-func-hover: var(--c-keys-func-hover);
 
-// ### Backgrounds
+$c-keys-equal: var(--c-keys-equal);
+$c-keys-equal-shadow: var(--c-keys-equal-shadow);
+$c-keys-equal-hover: var(--c-keys-equal-hover);
 
-//main background
-$theme1Bckgrnd1: hsl(222, 26%, 31%);
-//toggle background, keypad background)
-$theme1Bckgrnd2: hsl(223, 31%, 20%);
-// (screen background)
-$theme1Bckgrnd3: hsl(224, 36%, 15%);
+$c-toggle: var(--c-toggle);
+$c-keys: var(--c-keys);
+$c-keys-shadow: var(--c-keys-shadow);
+$c-keys-hover: var(--c-keys-hover);
 
-// #### Keys
+/* Text */
+$c-text-primary: var(--c-text-primary);
+$c-text-secondary: var(--c-text-secondary);
+$c-text-tertiary: var(--c-text-tertiary);
+$c-text-header: var(--c-text-header);
+$c-text-display: var(--c-text-display);
 
-//blue key
-$theme1KeyBckgrndBlue: hsl(225, 21%, 49%);
-$theme1keyShadowBlue: hsl(224, 28%, 35%);
-$theme1keyHoverBlue: hsl(225, 21%, 59%);
+/* Fonts */
+$ff-primary: "League Spartan", sans-serif;
+$ff-weight: 700;
 
-//red key
-$theme1KeyBckgrndToggleRed: hsl(6, 63%, 50%);
-$theme1KeyShadowRed: hsl(6, 70%, 34%);
-$theme1KeyHoverRed: hsl(6, 63%, 60%);
+/*FONT SIZE*/
 
-//wheat key
-$theme1KeyBackgroundWheat: hsl(30, 25%, 89%);
-$theme1KeyShadowWheat: hsl(28, 16%, 65%);
-$theme1KeyHoverWheat: hsl(30, 25%, 99%);
+$fs-key: 24px;
+$fs-key2: 20px;
+$fs-key3: 18px;
 
-// #### Text
+$fs-screen: 32px;
+$fs-screen2: 28px;
 
-$theme1BlueText: hsl(221, 14%, 31%);
-$theme1WhiteText: hsl(0, 0%, 100%);
-
-//THEME NO. 2
-
-// ### Backgrounds
-
-//main background
-$theme2MainBckgrnd: hsl(0, 0%, 90%);
-//toggle background, keypad background)
-$theme2ToggleKeypadBckgrnd: hsl(0, 5%, 81%);
-// (screen background)
-$theme2ScreenBckgrnd: hsl(0, 0%, 93%);
-
-// #### Keys
-
-$theme2KeyBckgrndCyan: hsl(185, 42%, 37%);
-$theme2KeyShadowCyan: hsl(185, 58%, 25%);
-$theme2KeyHoverCyan: hsl(185, 42%, 47%);
-
-$theme2KeyBckgrndToggleOrng: hsl(25, 98%, 40%);
-$theme2KeyShadowOrng: hsl(25, 99%, 27%);
-$theme2KeyHoverOrng: hsl(25, 98%, 50%);
-
-$theme2KeyBackgroundWheat: hsl(45, 7%, 89%);
-$theme2KeyShadowWheat: hsl(35, 11%, 61%);
-$theme2KeyHoverWheat: hsl(45, 7%, 99%);
-
-// #### Text
-
-$theme2BlueText: hsl(60, 10%, 19%);
-$theme2WhiteText: hsl(0, 0%, 100%);
-
-//THEME NO. 3
-
-// ### Backgrounds
-
-//main background
-$theme3Bckgrnd1: hsl(268, 75%, 9%);
-//(toggle background, keypad background, screen background):
-$theme3Bckgrnd2: hsl(268, 71%, 12%);
-
-// #### Keys
-
-$theme3KeyBckgrndViolet: hsl(281, 89%, 26%);
-$theme3KeyShdowViolet: hsl(285, 91%, 52%);
-$theme3KeyHoverViolet: hsl(281, 89%, 36%);
-
-$theme3KeyBckgrndToggleCyan: hsl(176, 100%, 44%);
-$theme3KeyShdowCyan: hsl(177, 92%, 70%);
-$theme3KeyHoverCyan: hsl(176, 100%, 54%);
-
-$theme3KeyBckgrndDark: hsl(268, 47%, 21%);
-$theme3KeyShdowMagenta: hsl(290, 70%, 36%);
-$theme3KeyHoverDark: hsl(268, 47%, 31%);
-
-// #### Text
-
-$theme3YellowText: hsl(52, 100%, 62%);
-$theme3BlueText: hsl(198, 20%, 13%);
-$theme3WhiteText: hsl(0, 0%, 100%);
-
-//FONT
-
-$fontBtnSize: 24px;
-$fontResultSize: 32px;
-
-$fontPrimary: "League Spartan", sans-serif;
-$fontWeight: 700;
-
-//MIXIN
+/*MIXIN*/
 @mixin flexCenter {
   display: flex;
   justify-content: center;
@@ -108,10 +48,4 @@ $fontWeight: 700;
 @mixin paddingRadius {
   padding: 25px;
   border-radius: 10px;
-}
-
-:export {
-  backgroundTheme1: $theme1Bckgrnd1;
-  backgroundTheme2: $theme2MainBckgrnd;
-  backgroundTheme3: $theme3Bckgrnd1;
 }
