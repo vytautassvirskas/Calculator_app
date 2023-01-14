@@ -15,6 +15,7 @@ function App() {
     mathSign: "",
     input: 0,
     result: 0,
+    infoLine: "",
   });
   const contextValues = { calc, setCalc, theme, setTheme };
 
@@ -25,12 +26,19 @@ function App() {
   return (
     <MainContext.Provider value={contextValues}>
       <div className="calc" id={theme}>
-        <CalcTop />
-        <Display />
-        <KeyPad />
+        <div className="calc__app">
+          <CalcTop />
+          <Display />
+          <KeyPad />
+        </div>
       </div>
     </MainContext.Provider>
   );
 }
 
 export default App;
+
+/*
+jei yra INPUT tada tiesiog trinu, bet jei yra mathsign
+
+*/

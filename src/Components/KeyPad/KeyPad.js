@@ -6,6 +6,7 @@ import "./KeyPad.scss";
 
 const KeyPad = () => {
   const { calc, setCalc } = useContext(MainContext);
+  const zeroErr = "Cannot divide by zero";
 
   const handleSlice = (value) => {
     return value.toString().slice(0, value.length - 1);
@@ -13,61 +14,68 @@ const KeyPad = () => {
 
   //delete
   const handleDelete = () => {
-    if (calc.input.length > 1 || calc.result.length > 1) {
-      setCalc({
-        ...calc,
-        input: calc.input ? handleSlice(calc.input) : 0,
-        result:
-          calc.result && !calc.input ? handleSlice(calc.result) : calc.result,
-      });
-      return;
-    }
-
+    // if (calc.input.length > 1 || calc.result.length > 1) {
     setCalc({
       ...calc,
-      input: 0,
-      result: 0,
+      input: calc.input ? handleSlice(calc.input) : calc.mathSign ? "0" : 0,
+      result: !Number(calc.result)
+        ? 0
+        : calc.result && !calc.input && !calc.mathSign
+        ? handleSlice(calc.result)
+        : calc.result,
+      infoLine: calc.mathSign && calc.result ? calc.infoLine : "",
+      // mathSign: "",
     });
+    return;
+    // }
+
+    // setCalc({
+    //   ...calc,
+    //   input: 0,
+    //   result: 0,
+    //   infoLine: "",
+    //   mathSign: "",
+    // });
   };
 
-  //reset
+  //reset  ++++
   const handleReset = () => {
     setCalc({
       ...calc,
       mathSign: "",
       input: 0,
       result: 0,
+      infoLine: "",
     });
   };
 
-  //handleDot
+  //handleDot +++
   const handleDot = (value) => {
+    // console.log(typeof Number(calc.result));
     setCalc({
       ...calc,
-      input:
-        calc.result && !calc.result.toString().includes(".")
-          ? calc.result + value
-          : !calc.input.toString().includes(".")
-          ? calc.input + value
-          : calc.input,
+      input: !calc.input.toString().includes(".")
+        ? calc.input + value
+        : calc.input,
       result: !calc.mathSign ? 0 : calc.result,
+      infoLine: !calc.mathSign ? "" : calc.infoLine,
     });
   };
 
-  //handleNumber
+  //handleNumber ++++
   const handleNumber = (value) => {
     if (calc.input.toString().length < 18) {
       setCalc({
         ...calc,
         input:
+          // !calc.input && value === "0"
           calc.input === 0 && value === "0"
-            ? "0"
-            : calc.result && !calc.input && !calc.mathSign
-            ? calc.result + value
+            ? value
             : calc.input === "0" || calc.input === 0
             ? value
             : calc.input + value,
         result: !calc.mathSign ? 0 : calc.result,
+        infoLine: !calc.mathSign ? "" : calc.infoLine,
       });
     }
   };
@@ -83,38 +91,59 @@ const KeyPad = () => {
   };
 
   //equal
-  const handleEqual = () => {
+  const handleEqual = (value) => {
     if (calc.mathSign && calc.input) {
       setCalc({
         ...calc,
         result:
           calc.mathSign === "/" && calc.input === "0"
-            ? "Cannot divide by zero"
+            ? zeroErr
             : handleMath(+calc.result, +calc.input, calc.mathSign).toString(), //for deleting last digit it should be string
+        infoLine: calc.infoLine + calc.input + value,
         mathSign: "",
         input: 0,
       });
     }
   };
 
-  //handleMath
+  //handleMath +++++
   const handleMathSign = (value) => {
     setCalc({
       ...calc,
-      mathSign: value,
+      mathSign:
+        calc.result === zeroErr
+          ? ""
+          : calc.mathSign === "/" && Number(calc.input) === 0
+          ? ""
+          : value,
       result:
-        calc.result && calc.input
-          ? handleMath(+calc.result, +calc.input, calc.mathSign)
+        calc.mathSign === "/" && Number(calc.input) === 0
+          ? zeroErr
+          : calc.result === zeroErr
+          ? 0
+          : calc.result && calc.input
+          ? handleMath(+calc.result, +calc.input, calc.mathSign).toString()
           : calc.result
           ? calc.result
           : Number(calc.input).toString(), //for deleting last digit it should be string
+      infoLine:
+        calc.result === zeroErr
+          ? ""
+          : calc.mathSign === "/" && Number(calc.input) === 0
+          ? `(${calc.infoLine}${Number(calc.input).toString()})${value}`
+          : calc.input && calc.result
+          ? handleMath(+calc.result, +calc.input, calc.mathSign).toString() +
+            value
+          : calc.result
+          ? calc.result + value
+          : Number(calc.input) + value,
       input: 0,
     });
   };
   //console.log calc
-  // useEffect(() => {
-  //   console.log("useEffect calc: ", calc);
-  // }, [calc]);
+  useEffect(() => {
+    console.log("calc: ", calc);
+  }, [calc]);
 
   return (
     <div className="keypad">

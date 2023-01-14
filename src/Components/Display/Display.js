@@ -7,7 +7,12 @@ const Display = () => {
 
   return (
     <div className="display">
-      <p className="display__value">{calc.input ? calc.input : calc.result}</p>
+      <p className="display__info-screen">
+        {calc.infoLine ? calc.infoLine  : ""}
+      </p>
+      <p className="display__main-screen">
+        {calc.input ? calc.input : calc.result}
+      </p>
     </div>
   );
 };

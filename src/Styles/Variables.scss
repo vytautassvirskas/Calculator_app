@@ -24,10 +24,12 @@ $c-text-secondary: var(--c-text-secondary);
 $c-text-tertiary: var(--c-text-tertiary);
 $c-text-header: var(--c-text-header);
 $c-text-display: var(--c-text-display);
+$c-text-display2: var(--c-text-display2);
 
 /* Fonts */
 $ff-primary: "League Spartan", sans-serif;
-$ff-weight: 700;
+$fw-bold: 700;
+$fw-regular: 400;
 
 /*FONT SIZE*/
 
@@ -37,6 +39,9 @@ $fs-key3: 18px;
 
 $fs-screen: 32px;
 $fs-screen2: 28px;
+
+$fs-screen-info: 18px;
+$fs-screen-info2: 14px;
 
 /*MIXIN*/
 @mixin flexCenter {

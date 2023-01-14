@@ -5,7 +5,15 @@
   text-align: right;
   @include paddingRadius;
   margin-bottom: 20px;
-  &__value {
+  &__info-screen {
+    font-size: $fs-screen-info;
+    color: $c-text-display;
+    letter-spacing: 3px;
+    opacity: 0.3;
+    height: 22px;
+    font-weight: $fw-regular;
+  }
+  &__main-screen {
     color: $c-text-display;
     font-size: $fs-screen;
     @media (width <= 768px) {

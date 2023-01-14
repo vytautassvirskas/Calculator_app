@@ -1,13 +1,4 @@
-//Dar theme
-body:has(div#dark) {
-  --c-bg-main: hsl(222, 26%, 31%);
-}
-body:has(div#light) {
-  --c-bg-main: hsl(0, 0%, 90%);
-}
-body:has(div#neon) {
-  --c-bg-main: hsl(268, 75%, 9%);
-}
+//Dark theme
 #dark {
   /* Backgrounds */
   --c-bg-main: hsl(222, 26%, 31%);

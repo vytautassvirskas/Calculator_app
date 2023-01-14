@@ -7,13 +7,6 @@
 body {
   font-family: $ff-primary;
   font-size: $fs-key;
-  font-weight: $ff-weight;
+  font-weight: $fw-bold;
   background-color: $c-bg-main;
-}
-
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }

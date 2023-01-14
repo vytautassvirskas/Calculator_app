@@ -1,8 +1,15 @@
 @import "./Styles/Variables.scss";
 
 .calc {
-  width: 400px;
-  @media (width <= 768px) {
-    padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $c-bg-main;
+  &__app {
+    width: 400px;
+    @media (width <= 768px) {
+      padding: 25px;
+    }
   }
 }
