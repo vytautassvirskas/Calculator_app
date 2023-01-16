@@ -14,7 +14,6 @@ const KeyPad = () => {
 
   //delete
   const handleDelete = () => {
-    // if (calc.input.length > 1 || calc.result.length > 1) {
     setCalc({
       ...calc,
       input:
@@ -25,21 +24,10 @@ const KeyPad = () => {
           : 0,
       result: calc.result && !calc.mathSign ? 0 : calc.result,
       infoLine: calc.result && !calc.mathSign ? "" : calc.infoLine,
-      // mathSign: "",
     });
-    return;
-    // }
-
-    // setCalc({
-    //   ...calc,
-    //   input: 0,
-    //   result: 0,
-    //   infoLine: "",
-    //   mathSign: "",
-    // });
   };
 
-  //reset  ++++
+  //reset
   const handleReset = () => {
     setCalc({
       ...calc,
@@ -50,9 +38,8 @@ const KeyPad = () => {
     });
   };
 
-  //handleDot +++
+  //handleDot
   const handleDot = (value) => {
-    // console.log(typeof Number(calc.result));
     setCalc({
       ...calc,
       input: !calc.input.toString().includes(".")
@@ -63,7 +50,7 @@ const KeyPad = () => {
     });
   };
 
-  //handleNumber ++++
+  //handleNumber
   const handleNumber = (value) => {
     if (calc.input.toString().length < 18) {
       setCalc({
@@ -141,9 +128,9 @@ const KeyPad = () => {
     });
   };
   //console.log calc
-  useEffect(() => {
-    console.log("calc: ", calc);
-  }, [calc]);
+  // useEffect(() => {
+  //   console.log("calc: ", calc);
+  // }, [calc]);
 
   return (
     <div className="keypad">

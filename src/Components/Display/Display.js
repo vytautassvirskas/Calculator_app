@@ -12,7 +12,6 @@ const Display = () => {
       </p>
       <p className="display__main-screen">
         {calc.input ? calc.input : calc.result}
-        {/* {calc.input ? calc.input : calc.result || "0"} */}
       </p>
     </div>
   );

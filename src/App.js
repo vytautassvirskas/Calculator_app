@@ -36,8 +36,3 @@ function App() {
 }
 
 export default App;
-
-/*
-jei yra INPUT tada tiesiog trinu, bet jei yra mathsign
-
-*/
