@@ -8,10 +8,11 @@ const Display = () => {
   return (
     <div className="display">
       <p className="display__info-screen">
-        {calc.infoLine ? calc.infoLine  : ""}
+        {calc.infoLine ? calc.infoLine : ""}
       </p>
       <p className="display__main-screen">
         {calc.input ? calc.input : calc.result}
+        {/* {calc.input ? calc.input : calc.result || "0"} */}
       </p>
     </div>
   );

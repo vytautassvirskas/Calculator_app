@@ -17,13 +17,14 @@ const KeyPad = () => {
     // if (calc.input.length > 1 || calc.result.length > 1) {
     setCalc({
       ...calc,
-      input: calc.input ? handleSlice(calc.input) : calc.mathSign ? "0" : 0,
-      result: !Number(calc.result)
-        ? 0
-        : calc.result && !calc.input && !calc.mathSign
-        ? handleSlice(calc.result)
-        : calc.result,
-      infoLine: calc.mathSign && calc.result ? calc.infoLine : "",
+      input:
+        calc.input && calc.input.length > 1
+          ? handleSlice(calc.input)
+          : calc.mathSign && calc.input.length === 1
+          ? "0"
+          : 0,
+      result: calc.result && !calc.mathSign ? 0 : calc.result,
+      infoLine: calc.result && !calc.mathSign ? "" : calc.infoLine,
       // mathSign: "",
     });
     return;
@@ -68,7 +69,6 @@ const KeyPad = () => {
       setCalc({
         ...calc,
         input:
-          // !calc.input && value === "0"
           calc.input === 0 && value === "0"
             ? value
             : calc.input === "0" || calc.input === 0
@@ -90,16 +90,16 @@ const KeyPad = () => {
       : a / b;
   };
 
-  //equal
+  //equal +++
   const handleEqual = (value) => {
     if (calc.mathSign && calc.input) {
       setCalc({
         ...calc,
         result:
-          calc.mathSign === "/" && calc.input === "0"
+          calc.mathSign === "/" && Number(calc.input) === 0
             ? zeroErr
             : handleMath(+calc.result, +calc.input, calc.mathSign).toString(), //for deleting last digit it should be string
-        infoLine: calc.infoLine + calc.input + value,
+        infoLine: calc.infoLine + Number(calc.input) + value,
         mathSign: "",
         input: 0,
       });
